@@ -20,9 +20,9 @@ To train your domain-specific layer, please follow the steps at https://github.c
 Then set the model path (ckpt_list) and model description (model_description_list) at `eval_configs/medagi_eval.yaml` for each of your domain-specific alignment layers, for example
 
 ```shell
-  ckpt_list: ['/home/zhouj0d/Science/PID29.MedAGI/MedAGI/weights/skingpt_v4.2.pth',
-              '/home/zhouj0d/Science/PID29.MedAGI/MedAGI/weights/xray.pth',
-              '/home/zhouj0d/Science/PID29.MedAGI/MedAGI/weights/pathology.pth',
+  ckpt_list: ['MedAGI/weights/skingpt_v4.2.pth',
+              'MedAGI/weights/xray.pth',
+              'MedAGI/weights/pathology.pth',
   ]
 
   model_description_list: [
@@ -42,7 +42,7 @@ python demo.py --cfg-path eval_configs/medagi_eval.yaml  --gpu-id 0
 
 ## To Contribute
 
-We are open to accepting more domain-specific alignment layers! Please PR to add your domain-specific alignment layer and description. 
+We are open to accepting more domain-specific alignment layers! Please PR to add your domain-specific alignment layer and description in `eval_configs/medagi_eval.yaml` and place your model under `./weights`. 
 
 ## Acknowledgement
 
