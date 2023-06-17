@@ -1,0 +1,5 @@
+datasets:
+  cc_sbu_align:
+    data_type: images
+    build_info:
+      storage: /home/zhouj0d/Science/PID29.MedAGI/MedAGI/dataset/pathology/pathology_align

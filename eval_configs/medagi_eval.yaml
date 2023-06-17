@@ -1,0 +1,34 @@
+model:
+  arch: mini_gpt4
+  model_type: pretrain_vicuna
+  freeze_vit: True
+  freeze_qformer: True
+  max_txt_len: 160
+  end_sym: "###"
+  low_resource: False
+  prompt_path: "prompts/alignment.txt"
+  prompt_template: '###Human: {} ###Assistant: '
+  ckpt: "/home/zhouj0d/Science/PID29.MedAGI/MedAGI/weights/pretrained_minigpt4.pth"
+  ckpt_list: ['/home/zhouj0d/Science/PID29.MedAGI/MedAGI/weights/skingpt_v4.2.pth',
+              '/home/zhouj0d/Science/PID29.MedAGI/MedAGI/weights/xray.pth',
+              '/home/zhouj0d/Science/PID29.MedAGI/MedAGI/weights/pathology.pth',
+  ]
+
+  model_description_list: [
+    'SkinGPT is a revolutionary dermatology diagnostic system that utilizes an advanced vision-based large language model to assess skin conditions. By uploading personal skin photos to the system, users receive an autonomous analysis that can identify and categorize various skin conditions, and provide treatment recommendations.',
+    'XrayChat is a cutting-edge system that enables interactive, multi-turn conversations about chest X-ray images. Users simply upload a chest X-ray image, ask any question about it, and XrayChat generates informed responses. The system utilizes an X-ray encoder, a large language model, and an adaptor to comprehend the X-ray image and produce accurate and helpful answers.',
+    'PathologyChat is a cutting-edge system that enables interactive, multi-round conversations about stained pathology images. Users simply upload a pathology, ask any question about it, and PathologyChat generates informed responses.'
+  ]
+
+datasets:
+  cc_sbu_align:
+    vis_processor:
+      train:
+        name: "blip2_image_eval"
+        image_size: 224
+    text_processor:
+      train:
+        name: "blip_caption"
+
+run:
+  task: image_text_pretrain
