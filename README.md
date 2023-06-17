@@ -1,6 +1,6 @@
 # MedAGI: Pick up the most suitable domain-specific alignment layer for you
 
-[Juexiao Zhou#](https://www.joshuachou.ink/), Xiuying Chen#, Xin Gao
+[Juexiao Zhou#](https://www.joshuachou.ink/), Xiuying Chen#, Xin Gao.  #Equal Contribution
 
 King Abdullah University of Science and Technology, KAUST
 
