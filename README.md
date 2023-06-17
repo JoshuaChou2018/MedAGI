@@ -52,7 +52,7 @@ We are open to accepting more domain-specific alignment layers! Please PR to add
 
 ## Citation
 
-If you're using MedAGI in your research or applications, please cite both MedAGI using this BibTeX:
+If you're using MedAGI in your research or applications, please cite MedAGI using this BibTeX:
 
 ```
 xxx
