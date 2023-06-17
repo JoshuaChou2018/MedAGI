@@ -1,4 +1,4 @@
-# MedAGI: Pick up the most suitable domain-specific alignment layer for you
+# MedAGI: Unify Domain-specific Medical LLMs with the Lowest Cost
 
 [Juexiao Zhou#](https://www.joshuachou.ink/), Xiuying Chen#, Xin Gao.  #Equal Contribution
 
