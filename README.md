@@ -4,7 +4,7 @@
 
 King Abdullah University of Science and Technology, KAUST
 
-<a href='xxx.pdf'><img src='https://img.shields.io/badge/Paper-PDF-red'></a>
+<a href='MedAGI_v1.pdf'><img src='https://img.shields.io/badge/Paper-PDF-red'></a>
 
 ![fig1](https://cdn.jsdelivr.net/gh/JoshuaChou2018/oss@main/uPic/fig1.sOHmGg.png)
 
