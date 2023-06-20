@@ -109,7 +109,7 @@ def gradio_answer(chatbot, chat_state, img_list, num_beams, temperature):
     chatbot[-1][1] = llm_message
     return chatbot, chat_state, img_list
 
-title = """<h1 align="center">Demo of MedAGI, Powered by MedAGI</h1>"""
+title = """<h1 align="center">Demo of MedAGI, Powered by MiniGPT-4</h1>"""
 description = """<h3>This is the demo of MedAGI. Upload your images and start chatting! MedAGI will pick up the most suitable domain-specific alignment layer for you.</h3>"""
 article = """ """
 #TODO show examples below
