@@ -1,23 +1,24 @@
 import argparse
 import os
 import random
+import time
 
 import numpy as np
 import torch
 import torch.backends.cudnn as cudnn
 import gradio as gr
 
-from minigpt4.common.config import Config
-from minigpt4.common.dist_utils import get_rank
-from minigpt4.common.registry import registry
-from minigpt4.conversation.conversation import Chat, CONV_VISION
+from medagi.common.config import Config
+from medagi.common.dist_utils import get_rank
+from medagi.common.registry import registry
+from medagi.conversation.conversation import Chat, CONV_VISION
 
 # imports modules for registration
-from minigpt4.datasets.builders import *
-from minigpt4.models import *
-from minigpt4.processors import *
-from minigpt4.runners import *
-from minigpt4.tasks import *
+from medagi.datasets.builders import *
+from medagi.models import *
+from medagi.processors import *
+from medagi.runners import *
+from medagi.tasks import *
 
 
 def parse_args():
@@ -50,6 +51,7 @@ def setup_seeds(config):
 #             Model Initialization
 # ========================================
 
+start_time_1 = time.time()
 print('Initializing Chat')
 args = parse_args()
 cfg = Config(args)
@@ -63,6 +65,9 @@ vis_processor_cfg = cfg.datasets_cfg.cc_sbu_align.vis_processor.train
 vis_processor = registry.get_processor_class(vis_processor_cfg.name).from_config(vis_processor_cfg)
 chat = Chat(model, vis_processor, device='cuda:{}'.format(args.gpu_id))
 print('Initialization Finished')
+
+end_time_1 = time.time()
+print(f'Initialization took {end_time_1-start_time_1} secs')
 
 # ========================================
 #             Gradio Setting
@@ -86,7 +91,10 @@ def upload_img(gr_img, text_input, chat_state):
 def gradio_ask(user_message, chatbot, chat_state):
     if len(user_message) == 0:
         return gr.update(interactive=True, placeholder='Input should not be empty!'), chatbot, chat_state
+    start_time_2 = time.time()
     chat.ask(user_message, chat_state)
+    end_time_2 = time.time()
+    print(f'Reload took {end_time_1-start_time_1} secs')
     chatbot = chatbot + [[user_message, None]]
     return '', chatbot, chat_state
 
@@ -101,7 +109,7 @@ def gradio_answer(chatbot, chat_state, img_list, num_beams, temperature):
     chatbot[-1][1] = llm_message
     return chatbot, chat_state, img_list
 
-title = """<h1 align="center">Demo of MedAGI, Powered by MiniGPT4</h1>"""
+title = """<h1 align="center">Demo of MedAGI, Powered by MedAGI</h1>"""
 description = """<h3>This is the demo of MedAGI. Upload your images and start chatting! MedAGI will pick up the most suitable domain-specific alignment layer for you.</h3>"""
 article = """ """
 #TODO show examples below
@@ -142,10 +150,11 @@ with gr.Blocks() as demo:
             text_input = gr.Textbox(label='User', placeholder='Please upload your image first', interactive=False)
     
     upload_button.click(upload_img, [image, text_input, chat_state], [image, text_input, upload_button, chat_state, img_list])
-    
+
     text_input.submit(gradio_ask, [text_input, chatbot, chat_state], [text_input, chatbot, chat_state]).then(
         gradio_answer, [chatbot, chat_state, img_list, num_beams, temperature], [chatbot, chat_state, img_list]
     )
+
     clear.click(gradio_reset, [chat_state, img_list], [chatbot, image, text_input, upload_button, chat_state, img_list], queue=False)
 
 demo.launch(share=True, enable_queue=True, server_port=5905, server_name='0.0.0.0')

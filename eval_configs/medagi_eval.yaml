@@ -1,5 +1,5 @@
 model:
-  arch: mini_gpt4
+  arch: medagi
   model_type: pretrain_vicuna
   freeze_vit: True
   freeze_qformer: True
@@ -8,7 +8,7 @@ model:
   low_resource: False
   prompt_path: "prompts/alignment.txt"
   prompt_template: '###Human: {} ###Assistant: '
-  ckpt: "/home/zhouj0d/Science/PID29.MedAGI/MedAGI/weights/pretrained_minigpt4.pth"
+  ckpt: "/home/zhouj0d/Science/PID29.MedAGI/MedAGI/weights/pretrained_medagi.pth"
   ckpt_list: ['/home/zhouj0d/Science/PID29.MedAGI/MedAGI/weights/skingpt_v4.2.pth',
               '/home/zhouj0d/Science/PID29.MedAGI/MedAGI/weights/xray.pth',
               '/home/zhouj0d/Science/PID29.MedAGI/MedAGI/weights/pathology.pth',
