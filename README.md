@@ -19,9 +19,9 @@ conda activate medagi
 
 To train your domain-specific layer, please follow the steps at https://github.com/Vision-CAIR/MiniGPT-4
 
-First, set the path to vicunna model at `medagi/configs/models/medagi.yaml`
+First, set the path to vicuna in `medagi/configs/models/medagi.yaml`
 
-Then set the model path (ckpt_list) and model description (model_description_list) at `eval_configs/medagi_eval.yaml` for each of your domain-specific alignment layers, for example
+Then set the model path (ckpt_list) and model description (model_description_list) in `eval_configs/medagi_eval.yaml` for each of your domain-specific alignment layers, for example
 
 ```shell
   ckpt_list: ['MedAGI/weights/skingpt_v4.2.pth',
