@@ -94,7 +94,7 @@ def gradio_ask(user_message, chatbot, chat_state):
     start_time_2 = time.time()
     chat.ask(user_message, chat_state)
     end_time_2 = time.time()
-    print(f'Reload took {end_time_1-start_time_1} secs')
+    print(f'Reload took {end_time_2-start_time_2} secs')
     chatbot = chatbot + [[user_message, None]]
     return '', chatbot, chat_state
 
